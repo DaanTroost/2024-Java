@@ -25,9 +25,7 @@ public class Day1 {
 		for (int i = 0; i < leftList.size(); i++) {
 			int leftNum = leftList.get(i);
 			int rightNum = rightList.get(i);
-			totalDistance += leftNum > rightNum ?
-			                 leftNum - rightNum :
-			                       rightNum - leftNum;
+			totalDistance += Math.abs(leftNum - rightNum);
 		}
 		return totalDistance;
 	}
