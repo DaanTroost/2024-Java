@@ -6,7 +6,7 @@ import java.util.*;
 public class Utils {
 	public static File loadFile(int day, int part) {
 		return new File(String.format(
-			"src/main/resources/AoC-2024-Input/day%d/part%d.txt",
+			"src/main/resources/input/day%d/part%d.txt",
 			day,
 			part)
 		);
