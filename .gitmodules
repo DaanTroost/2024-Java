@@ -1,6 +1,3 @@
 [submodule "Solutions/src/main/resources/AoC-2024-Input"]
 	path = Solutions/src/main/resources/AoC-2024-Input
 	url = https://github.com/DaanTroost/AoC-2024-Input
-[submodule "Solutions/AoC-2024-Input"]
-	path = Solutions/AoC-2024-Input
-	url = https://github.com/DaanTroost/AoC-2024-Input
