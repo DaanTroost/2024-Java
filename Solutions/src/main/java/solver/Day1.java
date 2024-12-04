@@ -5,19 +5,19 @@ import common.*;
 import java.io.*;
 import java.util.*;
 
-public class Day1 {
-	private final List<Integer> leftList;
-	private final List<Integer> rightList;
+public class Day1 extends BaseSolver{
+	private List<Integer> leftList;
+	private List<Integer> rightList;
 
 
 	public Day1() {
-		leftList = new ArrayList<>();
-		rightList = new ArrayList<>();
-		loadFileToLists();
+		super(1);
 	}
 
 
-	public int solvePart1() {
+	public int getDistance(List<String> input) {
+		regenerateLists();
+		splitList(input);
 		int totalDistance = 0;
 		leftList.sort(Integer::compareTo);
 		rightList.sort(Integer::compareTo);
@@ -30,31 +30,54 @@ public class Day1 {
 		return totalDistance;
 	}
 
-	public int solvePart2() {
+	public int getSimilarity(List<String> input) {
+		regenerateLists();
+		splitList(input);
 		int similarityScore = 0;
-		for (Integer leftValue : leftList) {
-			for (Integer rightValue : rightList) {
-				int occurrences = 0;
-				if (Objects.equals(rightValue, leftValue)) {
-					occurrences += 1;
-				}
-				similarityScore += leftValue * occurrences;
-			}
+		Map<Integer, Integer> occurrencesRight = new HashMap<>();
+		for (Integer val : rightList) {
+			occurrencesRight.putIfAbsent(val, 0);
+			occurrencesRight.put(val, occurrencesRight.get(val) + 1);
+		}
+		for (Integer val : leftList) {
+			similarityScore += val * occurrencesRight.getOrDefault(val, 0);
 		}
 		return similarityScore;
 	}
 
-	private void loadFileToLists() {
-		File inputFile = Utils.loadFile(1, 1);
-
-		try (Scanner scanner = new Scanner(inputFile)) {
-			while (scanner.hasNextLine()) {
-				String[] scanline = scanner.nextLine().split("\\s+");
-				leftList.add(Integer.parseInt(scanline[0]));
-				rightList.add(Integer.parseInt(scanline[1]));
-			}
-		} catch (FileNotFoundException e) {
-			System.err.println(e.getMessage());
+	private void splitList(List<String> input) {
+		for (String s : input) {
+			String[] temp = s.split(" {3}");
+			leftList.add(Integer.valueOf(temp[0]));
+			rightList.add(Integer.valueOf(temp[1]));
 		}
+	}
+
+	private void regenerateLists(){
+		if (leftList == null) {
+			leftList = new ArrayList<>();
+		} else {
+			leftList.clear();
+		}
+
+		if (rightList == null) {
+			rightList = new ArrayList<>();
+		} else {
+			rightList.clear();
+		}
+	}
+
+	@Override
+	protected String solvePart1(List<String> input) {
+		return String.valueOf(getDistance(input));
+	}
+
+	@Override
+	protected String solvePart2(List<String> input) {
+		return String.valueOf(getSimilarity(input));
+	}
+
+	public static void main(String[] args) {
+		new Day1();
 	}
 }

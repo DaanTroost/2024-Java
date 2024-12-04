@@ -116,7 +116,7 @@ public class Day4 {
 	}
 
 	private static List<String> loadFileAsListString() {
-		File input = Utils.loadFile(4,1);
+		File input = Utils.loadFile(4);
 		List<String> rawSearchField = new ArrayList<>();
 		try (Scanner scanner = new Scanner(input)) {
 			while (scanner.hasNextLine()) {

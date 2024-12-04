@@ -13,7 +13,7 @@ public class Day2 {
 		reports.clear();
 		unsafeReports.clear();
 		safeReports.clear();
-		String input = Utils.loadFileAsString(2, 1);
+		String input = Utils.loadFileAsString(2);
 
 		try (Scanner scan = new Scanner(input)) {
 			while (scan.hasNextLine()) {
