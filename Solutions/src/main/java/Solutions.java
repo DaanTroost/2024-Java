@@ -9,5 +9,9 @@ public class Solutions {
 		Day2 day2solver = new Day2();
 		System.out.println(day2solver.solvePart1());
 		System.out.println(day2solver.solvePart2());
+
+		Day4 day4solver = new Day4();
+		System.out.println(day4solver.solvePart1());
+		System.out.println(day4solver.solvePart2());
 	}
 }
