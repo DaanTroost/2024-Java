@@ -7,23 +7,23 @@ import java.util.*;
 import java.util.stream.*;
 
 public abstract class BaseSolver {
-	protected List<String> reportArray = new ArrayList<>();
+	protected List<String> stringList = new ArrayList<>();
 
 	protected BaseSolver(int day) {
-		reportArray = acquireInput(day);
+		stringList = acquireInput(day);
 		solve();
 	}
 
 	protected void solve(){
 		Instant start = Instant.now();
-		String answerPart1 = solvePart1(reportArray);
+		String answerPart1 = solvePart1(stringList);
 		Instant end = Instant.now();
 		System.out.println("The answer to part 1 is: " + answerPart1);
 		System.out.println("The time needed to arrive at this answer is: "
 			                   + Duration.between(start, end).toMillis() + " ms.");
 
 		start = Instant.now();
-		String answerPart2 = solvePart2(reportArray);
+		String answerPart2 = solvePart2(stringList);
 	    end = Instant.now();
 		System.out.println("The answer to part 2 is: " + answerPart2);
 		System.out.println("The time needed to arrive at this answer is: "
